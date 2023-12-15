@@ -14,3 +14,4 @@ Before building image, you need copy your `id_rsa` to this dir:
 ➜  openEuler cp ~/.ssh/id_rsa ./
 ```
 
+After entering container, you need to `:PlugInstall` in `vim`.
