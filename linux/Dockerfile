@@ -18,7 +18,6 @@ SHELL ["/bin/bash", "-c"]
 COPY id_rsa /root/.ssh/
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-RUN eval `ssh-agent -s` && ssh-add /root/.ssh/id_rsa
 
 RUN apt update
 RUN apt install -y gcc-12 g++-12 build-essential libssl-dev libncurses-dev 
@@ -27,6 +26,8 @@ RUN apt install -y ninja-build \
     software-properties-common flex bison bc cpio \
     && rm -rf /var/lib/apt/lists/*
 RUN apt install -y sudo git cmake wget curl gdb vim zsh qemu-system iputils-ping
+
+RUN eval `ssh-agent -s` && ssh-add /root/.ssh/id_rsa
 
 RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
 RUN apt-add-repository "deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-17 main"
