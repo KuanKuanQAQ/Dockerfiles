@@ -5,7 +5,7 @@
 # USAGE:
 # ```bash
 # docker build -t=x:v0 .
-# docker run -it --privileged --hostname=x x:v0 zsh
+# docker run -it --privileged=true x:v0 zsh
 # ```
 # =============================================================================
 
